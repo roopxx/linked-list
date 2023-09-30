@@ -1,10 +1,14 @@
+// Import the Node class from another module.
 import Node from "./node";
 
+// Define a LinkedList class.
 class LinkedList {
   constructor() {
+    // Initialize the head of the linked list as null (empty list).
     this.head = null;
   }
 
+  // Add a new node with the given value to the beginning of the linked list.
   prepend(value) {
     let temp = null;
     if (this.head != null) temp = this.head;
@@ -12,10 +16,11 @@ class LinkedList {
     this.head.nextNode = temp;
   }
 
+  // Add a new node with the given value to the end of the linked list.
   append(value) {
     let current = this.head;
     if (current == null) {
-      this.prepend(value);
+      this.prepend(value); // If the list is empty, use prepend to add the first element.
     } else {
       while (current.nextNode != null) {
         current = current.nextNode;
@@ -24,6 +29,7 @@ class LinkedList {
     }
   }
 
+  // Get the size (number of nodes) of the linked list.
   size() {
     let size = 0;
     let current = this.head;
@@ -34,11 +40,13 @@ class LinkedList {
     return size;
   }
 
+  // Get the head node of the linked list.
   head() {
     let current = this.head;
     return current;
   }
 
+  // Get the tail node (last node) of the linked list.
   tail() {
     let current = this.head;
     while (current.nextNode !== null) {
@@ -47,6 +55,7 @@ class LinkedList {
     return current;
   }
 
+  // Get the node at the specified index.
   at(index) {
     let size = this.size();
     let current = this.head;
@@ -62,6 +71,7 @@ class LinkedList {
     }
   }
 
+  // Remove the last node from the linked list.
   pop() {
     let current = this.head;
     while (current.nextNode.nextNode != null) {
@@ -70,6 +80,7 @@ class LinkedList {
     current.nextNode = null;
   }
 
+  // Check if the linked list contains a node with the given value.
   contains(value) {
     let current = this.head;
     while (current != null) {
@@ -79,6 +90,7 @@ class LinkedList {
     return false;
   }
 
+  // Find the index of the first node with the given value.
   find(value) {
     let current = this.head;
     let i = 0;
@@ -94,6 +106,7 @@ class LinkedList {
     return null;
   }
 
+  // Convert the linked list to a string for easy visualization.
   toString() {
     let str = "";
     let current = this.head;
@@ -109,10 +122,12 @@ class LinkedList {
     return str;
   }
 
+  // Insert a new node with the given value at the specified index.
   insertAt(value, index) {
     let current = this.head;
     let prev = null;
     if (current === null) this.prepend(value);
+    // If the list is empty, use prepend to add the first element.
     else {
       for (let i = 0; i < index; i++) {
         prev = current;
@@ -124,6 +139,7 @@ class LinkedList {
     newNode.nextNode = current;
   }
 
+  // Remove the node at the specified index.
   removeAt(index) {
     let current = this.head;
     let prev = null;
@@ -137,4 +153,5 @@ class LinkedList {
   }
 }
 
+// Export the LinkedList class to make it available for use in other modules.
 export default LinkedList;
